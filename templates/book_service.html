@@ -1,0 +1,60 @@
+{%extends "user_layout.html"%} {%block content%}
+<div class="form-main">
+  <div class="form-inner">
+    {%if services%}
+    <h2 class="form-heading">Book Service</h2>
+    <form action="#" method="POST">
+      <div class="mb-0">
+        <label for="name" class="form-label">Service Name</label>
+        <input
+          type="text"
+          class="form-control"
+          name="service_name"
+          id="service_name"
+          value="{{services.service_name}}"
+          disabled
+        />
+      </div>
+      <div class="mb-0">
+        <label for="base_price" class="form-label">Base Price</label>
+        <input
+          type="text"
+          class="form-control"
+          name="base_price"
+          id="base_price"
+          value="{{services.base_price}}"
+          disabled
+        />
+      </div>
+      <div class="mb-0">
+        <label for="time_required" class="form-label">Time required</label>
+        <input
+          type="text"
+          class="form-control"
+          name="time_required"
+          id="time_required"
+          value="{{services.time_required}}"
+          disabled
+        />
+      </div>
+      <div class="mb-0">
+        <label for="description" class="form-label">Description</label>
+        <input
+          type="text"
+          class="form-control"
+          name="description"
+          id="description"
+          value="{{services.description}}"
+        />
+      </div>
+      <div class="mt-2">
+        <button type="submit" class="btn btn-primary">Book</button>
+        <a href="/user/{{user_msg}}/{{user_id}}" class="btn btn-primary"
+          >Cancel</a
+        >
+      </div>
+    </form>
+    {%endif%}
+  </div>
+</div>
+{%endblock%}

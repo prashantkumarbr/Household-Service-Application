@@ -1,0 +1,22 @@
+{%extends "user_layout.html"%} {%block content%}
+    <div class="container mt-5">
+        <h2 class="text-center">Edit Service Request</h2>
+        <form action="/edit_request/{{user_msg}}/{{req_id}}/{{user_id}}" method="POST" class="mt-4">
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control" id="description" name="description" rows="4" required>{{ request.description }}</textarea>
+            </div>
+            <div class="mb-3">
+                <label for="status" class="form-label">Status</label>
+                <select class="form-select" id="status" name="status" required>
+                    <option value="Requested" {% if request.status == "Requested" %}selected{% endif %}>Requested</option>
+                    <option value="Closed" {% if request.status == "Closed" %}selected{% endif %}>Closed</option>
+                </select>
+            </div>
+            <div class="d-flex justify-content-between">
+                <a href="/user/{{user_msg}}/{{user_id}}" class="btn btn-secondary">Cancel</a>
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+            </div>
+        </form>
+    </div>
+{%endblock%}

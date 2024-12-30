@@ -1,0 +1,116 @@
+{%extends "professional_layout.html"%} {%block content%}
+<div class="container mt-4">
+  <!-- Profile and Home Links -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Home Page</h2>
+    <a
+      href="/professional_profile/{{user_msg}}/{{prof_id}}"
+      class="btn btn-outline-primary"
+      >View/Edit Profile Details</a
+    >
+  </div>
+
+  <!-- Services Section -->
+  <div>
+    <table class="table table-bordered">
+      <h2>New Requests</h2>
+      <thead class="table-light">
+        <tr>
+          <th>Request ID</th>
+          <th>Customer</th>
+          <th>Service Name</th>
+          <th>Description</th>
+          <th>Location</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for request in service_request %}{%if request.status=='Requested'%}
+        <tr>
+          <td>{{ request.id }}</td>
+          <td>{{ request.user_info.fullname }}</td>
+          <td>{{ request.service.service_name }}</td>
+          <td>{{ request.description }}</td>
+          <td>
+            {{ request.user_info.address }}, {{request.user_info.pincode}}
+          </td>
+          <td>
+            <a
+              href="/service_requests_accept/{{user_msg}}/{{ prof_id }}/{{ request.id }}"
+              class="btn btn-success"
+              >Accept</a
+            >
+
+            <a
+              href="/service_requests_reject/{{user_msg}}/{{ prof_id }}/{{ request.id }}"
+              class="btn btn-danger"
+              >Reject</a
+            >
+          </td>
+        </tr>
+        {% endif %} {% endfor %}
+      </tbody>
+    </table>
+    <table class="table table-bordered">
+      <h2>Accepted Requests</h2>
+      <thead class="table-light">
+        <tr>
+          <th>Request ID</th>
+          <th>Customer</th>
+          <th>Service Name</th>
+          <th>Description</th>
+          <th>Location</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for request in service_request %}{%if request.status=='Accepted' and
+        request.professional_id==prof_id%}
+        <tr>
+          <td>{{ request.id }}</td>
+          <td>{{ request.user_info.fullname }}</td>
+          <td>{{ request.service.service_name }}</td>
+          <td>{{ request.description }}</td>
+          <td>
+            {{ request.user_info.address }}, {{request.user_info.pincode}}
+          </td>
+          <td>{{ request.status }}</td>
+        </tr>
+        {% endif %} {% endfor %}
+      </tbody>
+    </table>
+    <table class="table table-bordered">
+      <h2>Closed Services</h2>
+      <thead class="table-light">
+        <tr>
+          <th>Request ID</th>
+          <th>Customer</th>
+          <th>Service Name</th>
+          <th>Description</th>
+          <th>Location</th>
+          <th>Date</th>
+          <th>Rating</th>
+          <th>Remarks</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for request in service_request %}{%if request.status=='Closed' and
+        request.professional_id==prof_id%}
+        <tr>
+          <td>{{ request.id }}</td>
+          <td>{{ request.user_info.fullname }}</td>
+          <td>{{ request.service.service_name }}</td>
+          <td>{{ request.description }}</td>
+          <td>
+            {{ request.user_info.address }}, {{request.user_info.pincode}}
+          </td>
+          <td>{{ request.date_of_completion }}</td>
+          <td>{{ request.review.rating }}</td>
+          <td>{{ request.review.description }}</td>
+        </tr>
+        {% endif %} {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{%endblock%}

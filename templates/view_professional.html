@@ -1,0 +1,66 @@
+{%extends "admin_layout.html"%} {%block content%} {%if prof%}
+<div class="form-main">
+  <div class="form-inner">
+    <h2 class="form-heading">Professional Datails</h2>
+    <form action="#">
+      <div class="mb-0">
+        <label for="name" class="form-label">Professional Name</label>
+        <input
+          type="text"
+          class="form-control"
+          value="{{prof.fullname}}"
+          disabled
+        />
+      </div>
+      <div class="mb-0">
+        <label for="base_price" class="form-label">Email</label>
+        <input
+          type="text"
+          class="form-control"
+          value="{{prof.email}}"
+          disabled
+        />
+      </div>
+      <div class="mb-0">
+        <label for="time_required" class="form-label">Service Name</label>
+        <input
+          type="text"
+          class="form-control"
+          value="{{prof.service_name}}"
+          disabled
+        />
+      </div>
+      <div class="mb-0">
+        <label for="description" class="form-label">Address</label>
+        <input
+          type="text"
+          class="form-control"
+          value="{{prof.address}},{{prof.pincode}}"
+          disabled
+        />
+      </div>
+      <div class="mb-0">
+        <label for="description" class="form-label">Description</label>
+        <input
+          type="text"
+          class="form-control"
+          value="{{prof.description}}"
+          disabled
+        />
+      </div>
+      <div class="mb-0">
+        <label for="description" class="form-label">Experience</label>
+        <input
+          type="text"
+          class="form-control"
+          value="{{prof.experience}}"
+          disabled
+        />
+      </div>
+      <div class="mt-2">
+        <a href="/admin/{{user_msg}}" class="btn btn-primary">Go Back</a>
+      </div>
+    </form>
+  </div>
+</div>
+{%endif%} {%endblock%}

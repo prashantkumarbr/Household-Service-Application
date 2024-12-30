@@ -1,0 +1,65 @@
+{%extends "user_layout.html"%} {%block content%} {%if user%}
+<div class="form-main">
+  <div class="form-inner">
+    <h2 class="form-heading">User Profile</h2>
+    <form action="#" method="POST">
+      <div class="mb-0">
+        <label for="name" class="form-label">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          name="fullname"
+          id="fullname"
+          value="{{user.fullname}}"
+        />
+      </div>
+      <div class="mb-0">
+        <label for="email" class="form-label">Email</label>
+        <input
+          type="text"
+          class="form-control"
+          name="email"
+          id="email"
+          value="{{user.email}}"
+        />
+      </div>
+      <div class="mb-0">
+        <label for="password" class="form-label">Password</label>
+        <input
+          type="text"
+          class="form-control"
+          name="password"
+          id="password"
+          value="{{user.password}}"
+        />
+      </div>
+      <div class="mb-0">
+        <label for="address" class="form-label">Address</label>
+        <input
+          type="text"
+          class="form-control"
+          name="address"
+          id="address"
+          value="{{user.address}}"
+        />
+      </div>
+      <div class="mb-0">
+        <label for="pincode" class="form-label">Pincode</label>
+        <input
+          type="text"
+          class="form-control"
+          name="pincode"
+          id="pincode"
+          value="{{user.pincode}}"
+        />
+      </div>
+      <div class="mt-2">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a href="/user/{{user_msg}}/{{user_id}}" class="btn btn-primary"
+          >Cancel</a
+        >
+      </div>
+    </form>
+  </div>
+</div>
+{%endif%} {%endblock%}

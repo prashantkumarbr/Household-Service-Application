@@ -1,0 +1,125 @@
+{%extends "admin_layout.html"%} {%block content%}
+<div class="container my-4">
+  <!-- Services Table -->
+  <h3>Services</h3>
+
+  <table class="table table-bordered">
+    <thead class="table-light">
+      <tr>
+        <th>ID</th>
+        <th>Service Name</th>
+        <th>Base Price</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    {%if service%}
+    <tbody>
+      {%for ser in service%}
+      <tr>
+        <td><a href="/view_service/{{ser.id}}/{{user_msg}}">{{ser.id}}</a></td>
+        <td>{{ser.service_name}}</td>
+        <td>{{ser.base_price}}</td>
+        <td>
+          <a
+            href="/edit_service/{{ser.id}}/{{user_msg}}"
+            class="btn btn-sm btn-primary"
+            >Edit</a
+          >
+          <a
+            href="/delete_service/{{ser.id}}/{{user_msg}}"
+            class="btn btn-sm btn-danger"
+            >Delete</a
+          >
+        </td>
+      </tr>
+      {%endfor%}
+    </tbody>
+    {%else%}
+    <h3 class="d-flex justify-content-center">No Services are available</h3>
+    {%endif%}
+  </table>
+  <a href="/service/{{user_msg}}" class="btn btn-success mb-4">+ New Service</a>
+
+  <!-- Professionals Table -->
+  <h3>Professionals</h3>
+
+  <table class="table table-bordered">
+    <thead class="table-light">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Experience (Yrs)</th>
+        <th>Service Name</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    {%if service_professional%}
+    <tbody>
+      {%for prof in service_professional%}
+      <tr>
+        <td>
+          <a href="/view_professional/{{prof.id}}/{{user_msg}}">{{prof.id}}</a>
+        </td>
+        <td>{{prof.fullname}}</td>
+        <td>{{prof.experience}}</td>
+        <td>{{prof.service_name}}</td>
+        <td>{{prof.status}}</td>
+        <td>
+          <a
+            href="/approve_status/{{prof.id}}/{{user_msg}}"
+            class="btn btn-sm btn-success"
+            >Approve</a
+          >
+          <a
+            href="/reject_status/{{prof.id}}/{{user_msg}}"
+            class="btn btn-sm btn-warning"
+            >Reject</a
+          >
+        </td>
+      </tr>
+      {%endfor%}
+    </tbody>
+    {%else%}
+    <h3 class="d-flex justify-content-center">No Professionals are Pending</h3>
+    {%endif%}
+  </table>
+
+  <!-- Service Requests Table -->
+  <h3>Service Requests</h3>
+
+  <table class="table table-bordered">
+    <thead class="table-light">
+      <tr>
+        <th>ID</th>
+        <th>Assigned Professional Name</th>
+        <th>Cutomer Name</th>
+        <th>Service</th>
+        <th>Requested Date</th>
+        <th>Status (R/A/C)</th>
+      </tr>
+    </thead>
+    {%if service_request%}
+    <tbody>
+      {%for req in service_request%}
+      <tr>
+        <td>{{req.id}}</td>
+        <td>
+          {% if req.professional_id %} {{ req.professional.fullname }} {% else
+          %} Not Assigned Yet {% endif %}
+        </td>
+        <td>{{req.user_info.fullname}}</td>
+        <td>{{req.service.service_name}}</td>
+        <td>{{req.date_of_request}}</td>
+        <td>{{req.status}}</td>
+      </tr>
+      {%endfor%}
+    </tbody>
+    {%else%}
+    <h3 class="d-flex justify-content-center">
+      No Service Requests are available
+    </h3>
+    {%endif%}
+  </table>
+</div>
+{%endblock%}

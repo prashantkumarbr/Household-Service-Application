@@ -1,0 +1,64 @@
+{%extends "user_layout.html"%} {%block content%}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-6 col-md-8">
+      <div class="card">
+        <div class="card-header bg-primary text-white text-center">
+          <h3>Submit Review</h3>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Service Details</h5>
+          <p><strong>Service:</strong> {{ request.service.service_name }}</p>
+          <p>
+            <strong>Professional:</strong> {{ request.professional.fullname }}
+          </p>
+          <p><strong>Request ID:</strong> {{ request.id }}</p>
+          <hr />
+          <form
+            action="/review_service/{{user_msg}}/{{request.id}}/{{user_id}}"
+            method="POST"
+          >
+            <div class="mb-3">
+              <label for="rating" class="form-label">Rating (1-5)</label>
+              <select class="form-select" name="rating" id="rating" required>
+                <option value="" disabled selected>Select Rating</option>
+                <option value="1">1 - Very Bad</option>
+                <option value="2">2 - Bad</option>
+                <option value="3">3 - Average</option>
+                <option value="4">4 - Good</option>
+                <option value="5">5 - Excellent</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="description" class="form-label"
+                >Review Description</label
+              >
+              <textarea
+                class="form-control"
+                name="description"
+                id="description"
+                rows="4"
+                placeholder="Write your review..."
+                required
+              ></textarea>
+            </div>
+            <input
+              type="hidden"
+              name="professional_id"
+              value="{{ request.professional.id }}"
+            />
+            <div class="flex">
+              <a href="/user/{{user_msg}}/{{user_id}}" class="btn btn-primary"
+                >Go Back</a
+              >
+              <button type="submit" class="btn btn-primary">
+                Submit Review
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{%endblock%}

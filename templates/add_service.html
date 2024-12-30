@@ -1,0 +1,49 @@
+{%extends "admin_layout.html"%} {%block content%}
+<div class="form-main">
+  <div class="form-inner">
+    <h2 class="form-heading">New Service</h2>
+    <form action="#" method="POST">
+      <div class="mb-0">
+        <label for="name" class="form-label">Service Name</label>
+        <input
+          type="text"
+          class="form-control"
+          name="service_name"
+          id="service_name"
+        />
+      </div>
+      <div class="mb-0">
+        <label for="base_price" class="form-label">Base Price</label>
+        <input
+          type="text"
+          class="form-control"
+          name="base_price"
+          id="base_price"
+        />
+      </div>
+      <div class="mb-0">
+        <label for="time_required" class="form-label">Time required</label>
+        <input
+          type="text"
+          class="form-control"
+          name="time_required"
+          id="time_required"
+        />
+      </div>
+      <div class="mb-0">
+        <label for="description" class="form-label">Description</label>
+        <input
+          type="text"
+          class="form-control"
+          name="description"
+          id="description"
+        />
+      </div>
+      <div class="mt-2">
+        <button type="submit" class="btn btn-primary">Add</button>
+        <a href="/admin/{{user_msg}}" class="btn btn-primary">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>
+{%endblock%}

@@ -1,0 +1,38 @@
+{%extends "admin_layout.html"%} {%block content%}
+<div class="container mt-4">
+  <div class="mt-5">
+    <h4>Service History</h4>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Review</th>
+          <th>Customer ID</th>
+          <th>Professional ID</th>
+          <th>Service Request ID</th>
+          <th>Rating</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if service_requests %} {% for request in service_requests %}
+        <tr>
+          <td>{{ request.id }}</td>
+          <td>{{ request.customer_id }}</td>
+
+          <td>{{ request.professional_id }}</td>
+          <td>{{ request.request_id }}</td>
+
+          <td>{{ request.rating }}</td>
+          <td>{{ request.description }}</td>
+        </tr>
+        {% endfor %} {% else %}
+        <tr>
+          <td colspan="5" class="text-center">No service history found.</td>
+        </tr>
+        {% endif %}
+      </tbody>
+    </table>
+  </div>
+
+  {%endblock%}
+</div>

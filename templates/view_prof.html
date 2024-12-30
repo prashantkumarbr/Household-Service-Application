@@ -1,0 +1,60 @@
+{%extends "admin_layout.html"%} {%block content%}
+<div class="container my-4">
+  <div class="container-fluid d-flex justify-content-end">
+    <form
+      class="d-flex"
+      role="search"
+      method="POST"
+      action="/apsearch/{{user_msg}}?role=admin"
+    >
+      <input
+        class="form-control me-2"
+        type="search"
+        placeholder="Search"
+        aria-label="Search"
+        name="search_txt"
+        id="search_txt"
+      />
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+  </div>
+  <h3>Professionals</h3>
+  <table class="table table-bordered">
+    <thead class="table-light">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Experience (Yrs)</th>
+        <th>Service Name</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    {%if service_professional%}
+    <tbody>
+      {%for prof in service_professional%}
+      <tr>
+        <td>
+          <a href="/service_requests/{{prof.id}}/{{user_msg}}">{{prof.id}}</a>
+        </td>
+        <td>{{prof.fullname}}</td>
+        <td>{{prof.experience}}</td>
+        <td>{{prof.service_name}}</td>
+        <td>
+          <a
+            href="/approve_status/{{prof.id}}/{{user_msg}}"
+            class="btn btn-sm btn-success"
+          >
+            {{prof.status}}
+          </a>
+        </td>
+      </tr>
+      {%endfor%}
+    </tbody>
+    {%else%}
+    <h3 class="d-flex justify-content-center">
+      No Professionals are available
+    </h3>
+    {%endif%}
+  </table>
+</div>
+{%endblock%}

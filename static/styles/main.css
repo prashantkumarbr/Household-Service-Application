@@ -1,0 +1,30 @@
+* {
+  margin: 0px;
+}
+.form-main,
+.form-heading {
+  display: flex;
+  justify-content: center;
+}
+.form-inner {
+  width: 30rem;
+  border: 2px solid black;
+  padding: 2rem;
+  border-radius: 15px;
+}
+.main-div {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.home-div {
+  display: flex;
+  align-items: center;
+  height: 80vh;
+}
+.err_msg {
+  display: flex;
+  justify-content: center;
+  color: rgba(255, 0, 0, 0.789);
+}
